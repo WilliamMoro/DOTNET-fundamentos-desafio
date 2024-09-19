@@ -14,34 +14,33 @@ namespace DesafioFundamentos.Models
 
         public void AdicionarVeiculo()
         {
-            // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
-            // *IMPLEMENTE AQUI*
             Console.WriteLine("Digite a placa do veículo para estacionar:");
+            var placaVeiculo = Console.ReadLine();
+            veiculos.Add(placaVeiculo);
         }
 
         public void RemoverVeiculo()
         {
             Console.WriteLine("Digite a placa do veículo para remover:");
+            var placaVeiculo = Console.ReadLine();
+            
 
-            // Pedir para o usuário digitar a placa e armazenar na variável placa
-            // *IMPLEMENTE AQUI*
-            string placa = "";
-
-            // Verifica se o veículo existe
-            if (veiculos.Any(x => x.ToUpper() == placa.ToUpper()))
+            int horas = 0;
+            decimal valorTotal = 0;
+            if (veiculos.Any(x => x.ToUpper() == placaVeiculo.ToUpper()))
             {
                 Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
+                horas = Convert.ToInt32(Console.ReadLine());
+                valorTotal = precoInicial + Convert.ToDecimal((precoPorHora * horas));
 
-                // TODO: Pedir para o usuário digitar a quantidade de horas que o veículo permaneceu estacionado,
-                // TODO: Realizar o seguinte cálculo: "precoInicial + precoPorHora * horas" para a variável valorTotal                
-                // *IMPLEMENTE AQUI*
-                int horas = 0;
-                decimal valorTotal = 0; 
+                veiculos.Remove(placaVeiculo);
 
-                // TODO: Remover a placa digitada da lista de veículos
-                // *IMPLEMENTE AQUI*
+                Console.WriteLine($"O veículo {placaVeiculo} foi removido e o preço total foi de: R$ {valorTotal}, qual será a forma de pagamento? \n \n");
 
-                Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {valorTotal}");
+                Console.WriteLine("Pressione uma tecla para continuar");
+                Console.ReadLine();
+
+                FormaDePagamento(valorTotal);
             }
             else
             {
@@ -51,17 +50,55 @@ namespace DesafioFundamentos.Models
 
         public void ListarVeiculos()
         {
-            // Verifica se há veículos no estacionamento
             if (veiculos.Any())
             {
                 Console.WriteLine("Os veículos estacionados são:");
-                // TODO: Realizar um laço de repetição, exibindo os veículos estacionados
-                // *IMPLEMENTE AQUI*
+                foreach (var veiculo in veiculos)
+                {
+                    Console.WriteLine($"{veiculo.ToUpper()}");
+                }
             }
             else
             {
                 Console.WriteLine("Não há veículos estacionados.");
             }
         }
-    }
+
+        public void FormaDePagamento(decimal valorTotal)
+        {
+            Console.Clear();
+
+            Console.WriteLine("Digite a sua opção:");
+            Console.WriteLine("1 - Pix");
+            Console.WriteLine("2 - Dinheiro");
+            Console.WriteLine("3 - Encerrar");
+
+            switch (Console.ReadLine())
+             {
+                case "1":
+                    Guid guid = Guid.NewGuid();
+                    Console.WriteLine($"Chave aleatória do pix: {guid} ");
+                    break;
+
+                case "2":
+                    Console.WriteLine("Ensira o valor dado em dinheiro");
+                    var valorRecebido = Convert.ToInt32(Console.ReadLine());
+
+                    decimal troco = 0;
+                    if (valorRecebido > valorTotal)
+                        troco = valorTotal - valorRecebido;
+
+                    Console.WriteLine($"{troco.ToString().Replace("-","")}, esse é o valor do troco");
+                    break;
+
+                case "3":
+                    Console.WriteLine($"Obrigado, volte sempre!");
+                    break;
+
+                default:
+                    Console.WriteLine("Opção inválida");
+                    break;
+                }
+            }
+        }
 }
