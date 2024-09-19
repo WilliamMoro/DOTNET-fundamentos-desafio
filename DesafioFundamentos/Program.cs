@@ -1,6 +1,4 @@
 ﻿using DesafioFundamentos.Models;
-using DominioProgram.Models;
-
 Console.OutputEncoding = System.Text.Encoding.UTF8;
 
 decimal precoInicial = 0;
@@ -14,7 +12,6 @@ Console.WriteLine("Agora digite o preço por hora:");
 precoPorHora = Convert.ToDecimal(Console.ReadLine());
 
 Estacionamento estacionamento = new Estacionamento(precoInicial, precoPorHora);
-var itensEstacionamento = new ItensEstacionamento(precoInicial, precoPorHora);
 
 string opcao = string.Empty;
 bool exibirMenu = true;
