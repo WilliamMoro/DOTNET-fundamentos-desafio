@@ -1,38 +1,53 @@
-# DIO - Trilha .NET - Fundamentos
+# Desafio - DIO
 www.dio.me
 
 ## Desafio de projeto
-Para este desafio, você precisará usar seus conhecimentos adquiridos no módulo de fundamentos, da trilha .NET da DIO.
+O desafio do projeto consiste em colocar em prática os fundamentos do .NET;
+
+## 🚀 Tecnologias
+Esse projeto foi desenvolvido com as seguintes tecnologias:
+
+- CSharp (C#) / .NET
+- Git e Github
 
 ## Contexto
-Você foi contratado para construir um sistema para um estacionamento, que será usado para gerenciar os veículos estacionados e realizar suas operações, como por exemplo adicionar um veículo, remover um veículo (e exibir o valor cobrado durante o período) e listar os veículos.
+Foi dada a porposta de construir um sistema para gestão de estacionamento, conseguindo assim gerenciar a quantidade de veículos estacionados e suas respectivas placas, como também adicionar e remover. Acrescentei um método de pagamento, assim analisando a forma de pagamento e em caso de dinheiro, mostrar o valor do troco na tela! Como diriam muitos, o básico que funciona, voltando a consolidar a base em CSharp e .NET.
 
 ## Proposta
-Você precisará construir uma classe chamada "Estacionamento", conforme o diagrama abaixo:
+Esse é o diagrama disponibilizado pela Dio, para fazer uma classe chamada "Estacionamento";
 ![Diagrama de classe estacionamento](diagrama_classe_estacionamento.png)
 
-A classe contém três variáveis, sendo:
-
-**precoInicial**: Tipo decimal. É o preço cobrado para deixar seu veículo estacionado.
-
-**precoPorHora**: Tipo decimal. É o preço por hora que o veículo permanecer estacionado.
-
-**veiculos**: É uma lista de string, representando uma coleção de veículos estacionados. Contém apenas a placa do veículo.
-
-A classe contém três métodos, sendo:
-
-**AdicionarVeiculo**: Método responsável por receber uma placa digitada pelo usuário e guardar na variável **veiculos**.
-
-**RemoverVeiculo**: Método responsável por verificar se um determinado veículo está estacionado, e caso positivo, irá pedir a quantidade de horas que ele permaneceu no estacionamento. Após isso, realiza o seguinte cálculo: **precoInicial** * **precoPorHora**, exibindo para o usuário.
-
-**ListarVeiculos**: Lista todos os veículos presentes atualmente no estacionamento. Caso não haja nenhum, exibir a mensagem "Não há veículos estacionados".
-
-Por último, deverá ser feito um menu interativo com as seguintes ações implementadas:
+A classe contém três métodos, sendo um método para cada respectivo item do menu:
 1. Cadastrar veículo
 2. Remover veículo
 3. Listar veículos
 4. Encerrar
 
+**--------------------------------------------------------------------------------------------------------------------------------------**
+
+**FormaDePagamento** Esse método foi feito a mais, por mim, para colocar em prática meus conhecimentos. Ao chamar a função **RemoverVeiculo**, a nova função é chamada, passando como parâmetro o valor total representado pela soma de precoInicial + (precoPorHora * quantidadeDeHoras).
+
+Logo, é feito um menu interativo com as opções:
+1. Pix
+2. Dinheiro
+3. Encerrar
+
+Quando o cliente seleciona **Pix**, é gerado uma NewGuid como chave aleatória. Quando selecionado Dinheiro, verifica se o valorRecebido é maior que o valorTotal, se sim, apresenta o quantia que deverá ser devolvida como troco e tratado para que o resultado da soma não apareça como negativo na tela.
+
+## Exemplo de Código.
+Aqui está um exemplo de um pouco do código desse desafio.
+
+![Exemplo de código](PequenoExemplo.png)
 
 ## Solução
-O código está pela metade, e você deverá dar continuidade obedecendo as regras descritas acima, para que no final, tenhamos um programa funcional. Procure pela palavra comentada "TODO" no código, em seguida, implemente conforme as regras acima.
+O código está sendo trabalhado, estou desenvolvendo agora mais classes para conseguir tirar algumas responsabilidades de dentro da mesma classe e deixa-lá mais abstrata.
+
+
+
+## Dio.me
+Para acessar o README - Dio-md responsável pelo desavio, segue o link:
+[https://github.com/WilliamMoro/DOTNET-fundamentos-desafio/edit/main/README-Dio.md](https://github.com/WilliamMoro/DOTNET-fundamentos-desafio/blob/main/README%20-%20Dio.md)
+
+
+## Contate-me:
+ :wave: [Contato pelo discord](https://discord.gg/williammoro) ou [LinkedIn](www.linkedin.com/in/william-moro-3b4909184)
